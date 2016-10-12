@@ -41,8 +41,7 @@
 
     echo "<th class=\"text-center\">
             <a href=\"".$sortLink."\">
-              ".$key."&nbsp;&nbsp;&nbsp;
-              <i class=\"fa ".$sortClass."\"></i>
+              ".$key." <i class=\"fa ".$sortClass."\"></i>
             </a>
           </th>";
 
@@ -57,7 +56,7 @@
   //  Geef voor iedere rij de inhoud van alle kolommen weer
   foreach( $lijstInhoud as $item ){
 
-    echo "<tr>";
+    echo "<tr class=\"editlink\" data-href=\"/edititem/".$_GET['tableName']."/".$item['id']."\">";
 
     foreach( $item as $key=>$value ){
       echo "<td class=\"text-center\">".(strlen($value) > 125?substr($value, 0, 125.)."...":$value)."</td>";
@@ -66,6 +65,10 @@
     $x++;
 
   }
+
+  echo "   </tr>
+          </tbody>
+        </table>";
 
   //  Geef tot slot een melding weer van het aantal gevonden items
   echo "<div class=\"alert alert-info\" role=\"alert\">

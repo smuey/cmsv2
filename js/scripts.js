@@ -41,6 +41,10 @@ $(document).ready(function(){
             yearSuffix: ''};
 
     $.datepicker.setDefaults( $.datepicker.regional[ "nl" ] );
+  });
+
+  $('.editlink').click(function(){
+    window.location = $(this).data("href");
   })
 
 })
