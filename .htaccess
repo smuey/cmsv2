@@ -1,0 +1,14 @@
+Allow from 172.16.1.0/24
+Allow from 172.16.10.0/24
+Allow from 127.0.0.1
+Allow from 83.232.157.250
+Allow from 62.129.139.91
+Allow from 62.129.139.106
+Order allow,deny
+Satisfy any
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.+).html$	/index.php?page=$1	[QSA,NC,NE]
