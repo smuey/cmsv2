@@ -28,15 +28,17 @@
 
     }
 
+    //  Voeg tenslotte de nieuwe rij toe aan de tabel
+    if( $lijst->insertNewRow( $_GET['tableName'], $_POST ) == true ){
 
-    //  Importquery maken(? Tijdelijk -> moet in de class gebeuren)
-    $importQuery = $lijst->createQuery('insert', $_GET['tableName'], $_POST);
+      header('Location: /showcontents/'.$_GET['tableName'].".html");
+      exit;
 
-    echo "Tijdelijke exit - er mag nog niets worden toegevoegd!<br />";
+    }else{
 
-    echo $importQuery;
+      
 
-    exit;
+    }
 
   }else{
 

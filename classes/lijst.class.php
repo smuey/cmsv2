@@ -99,7 +99,7 @@
 
           foreach( $queryData as $key=>$value ){
 
-            $qry.= $value.", ";
+            $qry.= "'".$value."', ";
 
           }
 
@@ -142,7 +142,8 @@
 
     /**************************************************************
 
-
+        handleUploadedFile( $file, $projectName ) - upload
+        een toegevoegd bestand naar de juiste map
 
     **************************************************************/
     public function handleUploadedFile( $file, $projectName ){
@@ -160,6 +161,23 @@
           exit;
         }
 
+      }
+
+    }
+
+
+    /**************************************************************
+
+        insertNewRow( $table, $data ) - Voeg een nieuwe rij toe
+        aan de opgegeven tabel
+
+    **************************************************************/
+    public function insertNewRow( $table, $data ){
+
+      if( $this->db->queryinsert( $table, $data ) == true ){
+        return true;
+      }else{
+        return false;
       }
 
     }
