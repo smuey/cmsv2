@@ -56,7 +56,7 @@
   //  Geef voor iedere rij de inhoud van alle kolommen weer
   foreach( $lijstInhoud as $item ){
 
-    echo "<tr class=\"editlink\" data-href=\"/edititem/".$_GET['tableName']."/".$item['id']."\">";
+    echo "<tr class=\"editlink\" data-href=\"/edititem/".$_GET['tableName']."/".$item['id'].".html\">";
 
     foreach( $item as $key=>$value ){
       echo "<td class=\"text-center\">".(strlen($value) > 125?substr($value, 0, 125.)."...":$value)."</td>";

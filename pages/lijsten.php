@@ -24,6 +24,11 @@
       include('incl/additem.php');
       break;
 
+    case "edititem":
+      //  Bewerk een bestaande rij
+      include('incl/edititem.php');
+      break;
+
     default:
       //  Toon een overzicht van alle tabellen in de gekozen database
       include('incl/showlistoverview.php');
