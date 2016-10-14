@@ -5,11 +5,12 @@
 ?>
 
 <h2 class="sub-header">Beschikbare lijsten</h2>
-<div class="col-sm-6 table-responsive">
+<div class="col-sm-10 table-responsive">
 <table class="table table-striped">
 <thead>
   <tr>
     <th>Naam</th>
+    <th>Bekijk items</th>
     <th>Nieuwe rij toevoegen</th>
     <th>Aanpassen</th>
     <th>Verwijderen</th>
@@ -29,7 +30,12 @@
                 <td>".$lijst['table_name']."</td>
                 <td class=\"text-center\">
                   <a href=\"/additem/".$lijst['table_name'].".html\">
-                    <span class=\"glyphicon glyphicon-plus\" aria-hidden=\"true\"></span>
+                    <span class=\"glyphicon glyphicon-eye-open\" aria-hidden=\"true\"></span>
+                  </a>
+                </td>
+                <td class=\"text-center\">
+                  <a href=\"/showcontents/".$lijst['table_name'].".html\">
+                    <span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>
                   </a>
                 </td>
                 <td class=\"text-center\">
