@@ -16,6 +16,7 @@
 
       $this->fileroot = "";
       $this->imageroot = "/home/data/websites/lionCMS/sites/";
+      $this->linkroot = "http://".str_replace("cms_","", $_SESSION['database']).".lcms.lionhead.nl";
 
     }
 
@@ -175,6 +176,53 @@
     public function insertNewRow( $table, $data ){
 
       if( $this->db->queryinsert( $table, $data ) == true ){
+        return true;
+      }else{
+        return false;
+      }
+
+    }
+
+
+    /**************************************************************
+
+        lookupFile( $project, $filename ) - Zoek een bestand
+        dat geupload is binnen het project op en Retourneer
+        de benodigde informatie om het weer te geven
+
+    **************************************************************/
+    public function lookupFile( $project, $filename ){
+
+      if( is_file( $this->imageroot.$project.'/downloads/'.$filename ) ){
+        return array('type'=>'download', 'link'=>$this->linkroot."/downloads/".$filename);
+      }elseif( is_file( $this->imageroot.$project.'/images/'.$filename ) ){
+        return array('type'=>'image', 'link'=>$this->linkroot."/images/".$filename);
+      }
+
+    }
+
+
+    /**************************************************************
+
+        editRow( $table, $id, $data ) - Bewerk een bestaand
+        rij in een tabel
+
+    **************************************************************/
+    public function editRow( $table, $id, $data ){
+
+      $query = "UPDATE ".$table." SET ";
+
+      foreach( $data as $key=>$value ){
+
+        $query .= $key."='".$value."', ";
+
+      }
+
+      $query = substr( $query, 0, -2 );
+
+      $query .= " WHERE id=".$id;
+
+      if( $this->db->queryupdate($query) == true){
         return true;
       }else{
         return false;

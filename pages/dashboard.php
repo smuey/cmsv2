@@ -74,3 +74,9 @@
    </div>
  </div>
 </div>
+
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted">Copyright &copy; <?php echo date("Y"); ?>, Lionhead Interactive</span>
+  </div>
+</footer>
