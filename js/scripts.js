@@ -4,6 +4,17 @@ $(window).load(function(){
 
 $(document).ready(function(){
 
+  //  Afhandelen van wel/niet selecteren van een checkbox
+  $('input[type="checkbox"]').click(function(){
+
+    if( $(this).is(':checked') ){
+      $(this).parent().find('input[type="hidden"]').remove();
+    }else{
+      $(this).parent().append('<input type=\"hidden\" name="'+$(this).attr('name')+'" value="off" />');
+    }
+
+  })
+
   //  Maak een gecombineerd invul/dropdown-blok van #dbchoice
   $('#dbchoice').selectize();
 

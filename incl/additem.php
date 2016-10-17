@@ -28,6 +28,14 @@
 
     }
 
+    foreach( $_POST as $key=>$value ){
+      if( $value == 'on' ){
+        $_POST[$key] = 1;
+      }elseif( $value == 'off' ){
+        $_POST[$key] =0;
+      }
+    }
+
     //  Voeg tenslotte de nieuwe rij toe aan de tabel
     if( $lijst->insertNewRow( $_GET['tableName'], $_POST ) == true ){
 
@@ -36,7 +44,7 @@
 
     }else{
 
-      
+
 
     }
 

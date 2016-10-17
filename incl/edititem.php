@@ -34,6 +34,13 @@
 
         }
 
+        foreach( $_POST as $key=>$value ){
+          if( $value == 'on' ){
+            $_POST[$key] = 1;
+          }elseif( $value == 'off' ){
+            $_POST[$key] == 0;
+          }
+        }
 
         //  Voeg tenslotte de nieuwe rij toe aan de tabel
         if( $lijst->editRow( $_GET['tableName'], $editId, $_POST ) == true ){
@@ -62,7 +69,7 @@
 
               case 'bool':
               case 'tinyint':
-                $input = "<input type=\"checkbox\" name=\"".$row['COLUMN_NAME']."\" class=\"form-check-input\" />";
+                $input = "<input type=\"checkbox\" name=\"".$row['COLUMN_NAME']."\" class=\"form-check-input\" ".( $rowData[$row['COLUMN_NAME']] == 1?"checked=\"checked\"":"" )." />";
                 break;
 
               case 'text':

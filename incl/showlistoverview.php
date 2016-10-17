@@ -10,10 +10,10 @@
 <thead>
   <tr>
     <th>Naam</th>
-    <th>Bekijk items</th>
-    <th>Nieuwe rij toevoegen</th>
-    <th>Aanpassen</th>
-    <th>Verwijderen</th>
+    <th class="text-center">Bekijk items</th>
+    <th class="text-center">Nieuwe rij toevoegen</th>
+    <th class="text-center">Aanpassen</th>
+    <th class="text-center">Verwijderen</th>
   </tr>
 </thead>
 <tbody>
@@ -29,12 +29,12 @@
         echo "<tr>
                 <td>".$lijst['table_name']."</td>
                 <td class=\"text-center\">
-                  <a href=\"/additem/".$lijst['table_name'].".html\">
+                  <a href=\"/showcontents/".$lijst['table_name'].".html\">
                     <span class=\"glyphicon glyphicon-eye-open\" aria-hidden=\"true\"></span>
                   </a>
                 </td>
                 <td class=\"text-center\">
-                  <a href=\"/showcontents/".$lijst['table_name'].".html\">
+                  <a href=\"/additem/".$lijst['table_name'].".html\">
                     <span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>
                   </a>
                 </td>
