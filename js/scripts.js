@@ -15,6 +15,30 @@ $(document).ready(function(){
 
   })
 
+  //  Verwijderen van een geuploade afbeelding mogelijk maken
+  $('.removeimg').click(function(e){
+
+    e.preventDefault();
+
+    var remove = confirm("Weet u zeker dat u de afbeelding wilt verwijderen?");
+
+    if( remove == true ){
+
+      $.post("/jq/removeimg.php", {
+  			link		:	$(this).attr('data')
+  		}, function(data){
+  			if(data!="fout"){
+
+          
+
+  			}
+
+  		});
+
+    }
+
+  })
+
   //  Maak een gecombineerd invul/dropdown-blok van #dbchoice
   $('#dbchoice').selectize();
 

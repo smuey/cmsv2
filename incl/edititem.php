@@ -94,6 +94,13 @@
                               </div>
                             </div>";
 
+                      echo "<div class=\"form-group row\">
+                              <label class=\"col-xs-2 col-form-label\">Afbeelding verwijderen</label>
+                              <div class=\"col-xs-8\">
+                                <button class=\"removeimg btn btn-primary\" data=\"".$uplFile['link']."\">Afbeelding verwijderen</button>
+                              </div>
+                            </div>";
+
                       echo "<input type=\"hidden\" name=\"".$row['COLUMN_NAME']."\" value=\"".$rowData[$row['COLUMN_NAME']]."\" />";
 
                       echo "<div class=\"alert alert-warning\"><strong>Let op!</strong> Bij het hieronder kiezen van een nieuwe afbeelding, zal de bestaande afbeelding overschreven worden</div>";
