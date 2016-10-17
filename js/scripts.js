@@ -20,16 +20,24 @@ $(document).ready(function(){
 
     e.preventDefault();
 
+    var btnindex = $('.removeimg').index(this);
+
     var remove = confirm("Weet u zeker dat u de afbeelding wilt verwijderen?");
 
     if( remove == true ){
 
       $.post("/jq/removeimg.php", {
-  			link		:	$(this).attr('data')
+
+  			link		:	$(this).attr('data-link'),
+        project : $(this).attr('data-project'),
+        table   : $(this).attr('data-table'),
+        field   : $(this).attr('data-field')
+
   		}, function(data){
+        
   			if(data!="fout"){
 
-          
+          $('.uplimg').eq(btnindex).fadeOut();
 
   			}
 

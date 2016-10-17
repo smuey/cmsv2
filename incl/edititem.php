@@ -87,23 +87,31 @@
                     //  Controleer of het om een afbeelding of download gaat
                     $uplFile = $lijst->lookupFile( str_replace("cms_","",$_SESSION['database']), $rowData[$row['COLUMN_NAME']] );
                     if( $uplFile['type'] == 'image' ){
-                      echo "<div class=\"form-group row\">
-                              <label class=\"col-xs-2 col-form-label\">Geuploade afbeelding</label>
-                              <div class=\"col-xs-8\">
-                                <img style=\"max-width: 600px;\" src=\"".$uplFile['link']."\" />
-                              </div>
-                            </div>";
+                      echo "<div class=\"uplimg\">";
+                      echo "  <div class=\"form-group row\">
+                                <label class=\"col-xs-2 col-form-label\">Geuploade afbeelding</label>
+                                <div class=\"col-xs-8\">
+                                  <img style=\"max-width: 600px;\" src=\"".$uplFile['link']."\" />
+                                </div>
+                              </div>";
 
-                      echo "<div class=\"form-group row\">
-                              <label class=\"col-xs-2 col-form-label\">Afbeelding verwijderen</label>
-                              <div class=\"col-xs-8\">
-                                <button class=\"removeimg btn btn-primary\" data=\"".$uplFile['link']."\">Afbeelding verwijderen</button>
-                              </div>
-                            </div>";
+                      echo "  <div class=\"form-group row\">
+                                <label class=\"col-xs-2 col-form-label\">Afbeelding verwijderen</label>
+                                <div class=\"col-xs-8\">
+                                  <button class=\"removeimg btn btn-primary\"
+                                          data-project=\"".str_replace("cms_","",$_SESSION['database'])."\"
+                                          data-link=\"".$uplFile['link']."\"
+                                          data-table=\"".$_GET['tableName']."\"
+                                          data-field=\"".$row['COLUMN_NAME']."\">Afbeelding verwijderen</button>
+                                </div>
+                              </div>";
 
-                      echo "<input type=\"hidden\" name=\"".$row['COLUMN_NAME']."\" value=\"".$rowData[$row['COLUMN_NAME']]."\" />";
+                      echo "  <input type=\"hidden\" name=\"".$row['COLUMN_NAME']."\" value=\"".$rowData[$row['COLUMN_NAME']]."\" />";
 
                       echo "<div class=\"alert alert-warning\"><strong>Let op!</strong> Bij het hieronder kiezen van een nieuwe afbeelding, zal de bestaande afbeelding overschreven worden</div>";
+
+                      echo "</div>";
+
                     }else{
                       echo "<div class=\"form-group row\">
                               <label class=\"col-xs-2 col-form-label\">Geupload bestand</label>

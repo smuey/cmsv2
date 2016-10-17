@@ -15,7 +15,7 @@
       $this->db = $db;
 
       $this->fileroot = "";
-      $this->imageroot = "/home/data/websites/lionCMS/sites/";
+      $this->imageroot = IMAGEROOT;
       $this->linkroot = "http://".str_replace("cms_","", $_SESSION['database']).".lcms.lionhead.nl";
 
     }
