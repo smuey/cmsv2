@@ -34,10 +34,42 @@ $(document).ready(function(){
         field   : $(this).attr('data-field')
 
   		}, function(data){
-        
+
   			if(data!="fout"){
 
           $('.uplimg').eq(btnindex).fadeOut();
+
+  			}
+
+  		});
+
+    }
+
+  })
+
+  //  Verwijderen van een geupload bestand mogelijk maken
+  $('.removefile').click(function(e){
+
+    e.preventDefault();
+
+    var btnindex = $('.removefile').index(this);
+
+    var remove = confirm("Weet u zeker dat u het bestand wilt verwijderen?");
+
+    if( remove == true ){
+
+      $.post("/jq/removefile.php", {
+
+  			link		:	$(this).attr('data-link'),
+        project : $(this).attr('data-project'),
+        table   : $(this).attr('data-table'),
+        field   : $(this).attr('data-field')
+
+  		}, function(data){
+
+  			if(data!="fout"){
+
+          $('.uplfile').eq(btnindex).fadeOut();
 
   			}
 

@@ -86,7 +86,9 @@
                   if( !empty( $rowData[$row['COLUMN_NAME']] ) ){
                     //  Controleer of het om een afbeelding of download gaat
                     $uplFile = $lijst->lookupFile( str_replace("cms_","",$_SESSION['database']), $rowData[$row['COLUMN_NAME']] );
+
                     if( $uplFile['type'] == 'image' ){
+
                       echo "<div class=\"uplimg\">";
                       echo "  <div class=\"form-group row\">
                                 <label class=\"col-xs-2 col-form-label\">Geuploade afbeelding</label>
@@ -96,7 +98,7 @@
                               </div>";
 
                       echo "  <div class=\"form-group row\">
-                                <label class=\"col-xs-2 col-form-label\">Afbeelding verwijderen</label>
+                                <label class=\"col-xs-2 col-form-label\"></label>
                                 <div class=\"col-xs-8\">
                                   <button class=\"removeimg btn btn-primary\"
                                           data-project=\"".str_replace("cms_","",$_SESSION['database'])."\"
@@ -106,23 +108,39 @@
                                 </div>
                               </div>";
 
-                      echo "  <input type=\"hidden\" name=\"".$row['COLUMN_NAME']."\" value=\"".$rowData[$row['COLUMN_NAME']]."\" />";
-
-                      echo "<div class=\"alert alert-warning\"><strong>Let op!</strong> Bij het hieronder kiezen van een nieuwe afbeelding, zal de bestaande afbeelding overschreven worden</div>";
-
-                      echo "</div>";
-
-                    }else{
-                      echo "<div class=\"form-group row\">
-                              <label class=\"col-xs-2 col-form-label\">Geupload bestand</label>
-                              <div class=\"col-xs-8\">
-                                <a target=\"_blank\" href=\"".$uplFile['link']."\">".$uplFile['link']."</a>
+                      echo "  <input type=\"hidden\" name=\"".$row['COLUMN_NAME']."\" value=\"".$rowData[$row['COLUMN_NAME']]."\" />
+                              <div class=\"alert alert-warning\">
+                                <strong>Let op!</strong> Bij het hieronder kiezen van een nieuwe afbeelding, zal de bestaande afbeelding overschreven worden
                               </div>
                             </div>";
 
-                      echo "<input type=\"hidden\" name=\"".$row['COLUMN_NAME']."\" value=\"".$rowData[$row['COLUMN_NAME']]."\" />";
+                    }else{
 
-                      echo "<div class=\"alert alert-warning\"><strong>Let op!</strong> Bij het hieronder kiezen van een nieuw bestand, zal het bestaande bestand overschreven worden</div>";
+                      echo "<div class=\"uplfile\">";
+                      echo "  <div class=\"form-group row\">
+                                <label class=\"col-xs-2 col-form-label\">Geupload bestand</label>
+                                <div class=\"col-xs-8\">
+                                  <a target=\"_blank\" href=\"".$uplFile['link']."\">".$uplFile['link']."</a>
+                                </div>
+                              </div>";
+
+                      echo "   <div class=\"form-group row\">
+                                <label class=\"col-xs-2 col-form-label\"></label>
+                                <div class=\"col-xs-8\">
+                                  <button class=\"removefile btn btn-primary\"
+                                          data-project=\"".str_replace("cms_","",$_SESSION['database'])."\"
+                                          data-link=\"".$uplFile['link']."\"
+                                          data-table=\"".$_GET['tableName']."\"
+                                          data-field=\"".$row['COLUMN_NAME']."\">Bestand verwijderen</button>
+                                </div>
+                              </div>";
+
+                      echo "  <input type=\"hidden\" name=\"".$row['COLUMN_NAME']."\" value=\"".$rowData[$row['COLUMN_NAME']]."\" />";
+
+                      echo "  <div class=\"alert alert-warning\">
+                                <strong>Let op!</strong> Bij het hieronder kiezen van een nieuw bestand, zal het bestaande bestand overschreven worden
+                              </div>
+                            </div>";
                     }
                   }
                 }else{
