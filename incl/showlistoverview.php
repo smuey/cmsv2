@@ -35,7 +35,7 @@
                 </td>
                 <td class=\"text-center\">
                   <a href=\"/additem/".$lijst['table_name'].".html\">
-                    <span class=\"glyphicon glyphicon-pencil\" aria-hidden=\"true\"></span>
+                    <span class=\"glyphicon glyphicon-plus\" aria-hidden=\"true\"></span>
                   </a>
                 </td>
                 <td class=\"text-center\">

@@ -49,17 +49,18 @@
 
   echo "      </tr>
             </thead>
-            <tbody>";
+            <tbody class=\"ui-sortable\">
+              <tr id=\"trash\"><td colspan=\"".count($lijstInhoud[0])."\" style=\"text-center\"><span class=\"glyphicon glyphicon-trash\" aria-hidden=\"true\"></span></td></tr>";
 
   $x = 0;   //  Teller om bij te houden hoeveel items er zijn verwerkt
 
   //  Geef voor iedere rij de inhoud van alle kolommen weer
   foreach( $lijstInhoud as $item ){
 
-    echo "<tr class=\"editlink\" data-href=\"/edititem/".$_GET['tableName']."/".$item['id'].".html\">";
+    echo "<tr class=\"ui-sortable-handle editlink\" data-href=\"/edititem/".$_GET['tableName']."/".$item['id'].".html\">";
 
     foreach( $item as $key=>$value ){
-      echo "<td class=\"text-center\">".(strlen($value) > 125?substr($value, 0, 125.)."...":$value)."</td>";
+      echo "<td class=\"text-center\">".(strlen($value) > 125?substr(strip_tags($value), 0, 125.)."...":strip_tags($value))."</td>";
     }
 
     $x++;

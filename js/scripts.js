@@ -4,6 +4,11 @@ $(window).load(function(){
 
 $(document).ready(function(){
 
+  //  Pop-over initialiseren
+  $('[data-toggle="popover"]').popover();
+
+  $('#trash').hide();
+
   //  Afhandelen van wel/niet selecteren van een checkbox
   $('input[type="checkbox"]').click(function(){
 
@@ -118,8 +123,50 @@ $(document).ready(function(){
     $.datepicker.setDefaults( $.datepicker.regional[ "nl" ] );
   });
 
+
   $('.editlink').click(function(){
     window.location = $(this).data("href");
   })
+
+
+
+
+
+  var fixHelperModified = function (e, tr) {
+        var $originals = tr.children();
+        var $helper = tr.clone();
+        $helper.children().each(function (index) {
+            $(this).width($originals.eq(index).width())
+        });
+        return $helper;
+    };
+
+    $("tbody").sortable({
+        activate: function (event, ui) {
+          $('#trash').show();
+        }
+    }, {
+        deactivate: function (event, ui) {
+          $("#trash").hide();
+        }
+    }, {cancel: '[contenteditable]'}, {connectWith: '#trash'}, {helper: fixHelperModified});
+
+
+    $("#trash").droppable({
+        accept: "tr",
+        hoverClass: "ui-state-hover",
+        drop: function (ev, ui) {
+
+            var result = confirm("Weet u zeker dat u deze rij wilt verwijderen?");
+
+            if( result == true ){
+              ui.draggable.remove();
+            }
+        }
+    });
+
+
+
+
 
 })

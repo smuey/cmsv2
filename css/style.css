@@ -97,3 +97,16 @@ a{
   width: 100%;
   margin-top: 55px;
 }
+
+#trash{
+  padding: 5px !important;
+}
+
+#trash:hover{
+  background-color: red !important;
+}
+
+.table td, .table th{
+    white-space: nowrap;
+    width: 1%;
+}

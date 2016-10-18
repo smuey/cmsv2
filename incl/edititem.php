@@ -78,12 +78,22 @@
 
               default:
 
+                //  Voor een veld met een datum
                 if( $row['COLUMN_NAME'] == 'date' || $row['COLUMN_NAME'] == 'datum' ){
+
                   $input = "<input class=\"form-control datepicker\" type=\"text\" name=\"".$row['COLUMN_NAME']."\" value=\"".$rowData[$row['COLUMN_NAME']]."\" />";
-                }elseif( $row['COLUMN_NAME'] == 'afbeelding' || $row['COLUMN_NAME'] == 'download' || $row['COLUMN_NAME'] == 'image'  || $row['COLUMN_NAME'] == 'file'){
+
+                //  Voor een afbeelding of download
+                }elseif($row['COLUMN_NAME'] == 'afbeelding' ||
+                        $row['COLUMN_NAME'] == 'download' ||
+                        $row['COLUMN_NAME'] == 'image'  ||
+                        $row['COLUMN_NAME'] == 'file'){
+
                   $input = "<input type=\"file\" class=\"form-control-file\" name=\"".$row['COLUMN_NAME']."\" value=\"".$rowData[$row['COLUMN_NAME']]."\" ><hr />";
+
                   //  Als er een item geupload is, toon dan een link naar het bestand in kwestie
                   if( !empty( $rowData[$row['COLUMN_NAME']] ) ){
+
                     //  Controleer of het om een afbeelding of download gaat
                     $uplFile = $lijst->lookupFile( str_replace("cms_","",$_SESSION['database']), $rowData[$row['COLUMN_NAME']] );
 
