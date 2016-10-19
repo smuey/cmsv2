@@ -26,6 +26,8 @@
   require_once("classes/db.class.php");
   require_once('classes/lijst.class.php');
 
+  $db = new Database(DBNAME,DBUSER,DBPASS);
+
   $lijst = new Lijst();
 
   global $properties, $db;

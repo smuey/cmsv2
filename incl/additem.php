@@ -44,7 +44,8 @@
 
     }else{
 
-
+      echo "Bij het invoegen is iets enorm fout gegaan!";
+      exit;
 
     }
 

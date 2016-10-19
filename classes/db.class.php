@@ -4,13 +4,13 @@ class Database extends PDO {
 
     protected $db = null;
 
-    function __construct(){
+    function __construct($dbName, $dbUser, $dbPass){
         if(is_null($this->db)){
             try {
-                $this->db = new PDO("mysql:dbname=".DBNAME,DBUSER,DBPASS);
-				$this->db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+              $this->db = new PDO("mysql:dbname=".$dbName,$dbUser,$dbPass);
+				      $this->db->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
             } catch (PDOException $e) {
-                echo 'Connection failed: ' . $e->getMessage();
+              echo 'Connection failed: ' . $e->getMessage();
             }
         }
         $this->query("SET NAMES UTF8");
@@ -143,6 +143,4 @@ class Database extends PDO {
 
 }
 
-$db = new Database();
-
-?> 
+?>

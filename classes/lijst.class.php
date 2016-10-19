@@ -11,6 +11,7 @@
 
       require_once('conf.php');
       require_once('db.class.php');
+      $db = new Database(DBNAME,DBUSER,DBPASS);
       global $db;
       $this->db = $db;
 

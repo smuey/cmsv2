@@ -1,11 +1,9 @@
 <?php
 
-//  require_once('../classes/conf.php');
-  define("DBNAME", "cms_".$_POST['project']);
-  define("DBUSER", "preview");
-  define("DBPASS","");
   define("IMAGEROOT","/home/data/websites/lionCMS/sites/");
   require_once('../classes/db.class.php');
+
+  $db = new Database("cms_".$_POST['project'], "preview", "");
 
   global $db;
 

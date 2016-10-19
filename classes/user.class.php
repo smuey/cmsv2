@@ -40,20 +40,29 @@
     **************************************************************/
     public function logIn( $username, $password ){
 
-      $pwd = 'b942e083af9e9ba0f6f3e13c1a86a8d4ca81dbbff41e79f2393e1f7270b3cc0e7fd113570b48a2d9ae905890beae55e1f081737d5579b200929bd67aeb33da6d';
+      require_once('conf.php');
+      require_once('db.class.php');
 
-      if( $username == 'michael@lionhead.nl' && hash('sha512', $password) == $pwd ){
+      $localDB = new Database(LOCALDBNAME,LOCALDBUSER,LOCALDBPASS);
 
-        $_SESSION['loggedin'] = true;
-        $_SESSION['userData'] = array( 'userEmail'=>$username );
+      $user = $localDB->queryrow("SELECT * FROM users WHERE email=?", array($username));
 
-        header('Location: /');
-        exit;
+      if( !empty( $user ) ){
 
-      }else{
+        if( hash('sha512', $password.$user['dateofregistration']) == $user['password'] ){
 
-        header('Location: ?loginIncorrect');
-        exit;
+          $_SESSION['loggedin'] = true;
+          $_SESSION['userData'] = array( 'userEmail'=>$username, 'usertype'=>$user['usertype'] );
+
+          header('Location: /');
+          exit;
+
+        }else{
+
+          header('Location: ?loginIncorrect');
+          exit;
+
+        }
 
       }
 
