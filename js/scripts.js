@@ -129,9 +129,12 @@ $(document).ready(function(){
   })
 
 
+  /*****************************************************************************
 
+    Code voor het slepen en verwijderen van rijen uit een tabel
+    (Gebruikt jQuery UI .draggable() )
 
-
+  *****************************************************************************/
   var fixHelperModified = function (e, tr) {
         var $originals = tr.children();
         var $helper = tr.clone();
@@ -160,13 +163,29 @@ $(document).ready(function(){
             var result = confirm("Weet u zeker dat u deze rij wilt verwijderen?");
 
             if( result == true ){
-              ui.draggable.remove();
+
+              $.post("/jq/removerow.php", {
+
+                project : ui.draggable.attr('data-db'),
+                table   : ui.draggable.attr('data-table'),
+                id      : ui.draggable.attr('data-id')
+
+          		}, function(data){
+
+          			if(data!="fout"){
+
+                  ui.draggable.remove();
+
+          			}
+
+          		});
+
             }
         }
     });
 
-
-
-
+    /*****************************************************************************
+        / Code voor het verslepen en verwijderen
+    *****************************************************************************/
 
 })
